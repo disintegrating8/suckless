@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
 static const unsigned int refresh_rate        = 60;  /* matches dwm's mouse event processing to your monitor's refresh rate for smoother window interactions */
 static const unsigned int enable_noborder     = 1;   /* toggles noborder feature (0=disabled, 1=enabled) */
@@ -46,22 +44,25 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "󰊖", "", "" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "", "", "󰊖", "", "" };
 
-static const char ptagf[] = "[%s %s]";  /* format of a tag label */
-static const char etagf[] = "[%s]";     /* format of an empty tag */
-static const int lcaselbl = 0;          /* 1 means make tag label lowercase */
+// static const char ptagf[] = "[%s %s]";  /* format of a tag label */
+// static const char etagf[] = "[%s]";     /* format of an empty tag */
+// static const int lcaselbl = 0;          /* 1 means make tag label lowercase */
 
 static const Rule rules[] = {
     /* class                instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
     { "St",                 NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "kitty",              NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "alacritty",          NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "warp-terminal",      NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "terminator",         NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "lutris",             NULL,     NULL,           0,         1,          0,          0,         0 },
-    { "steam_app_default",  NULL,     NULL,           0,         1,          0,          0,         0 },
-    { "thunar",             NULL,     NULL,           0,         1,          0,          0,         0 },
+    { "kitty",              NULL,     NULL,           1,         0,          1,          0,         0 },
+    { "Brave-browser",      NULL,     NULL,           2,         0,          0,          0,         0 },
+    { "Librewolf",          NULL,     NULL,           2,         0,          0,          0,         0 },
+    { "obs-studio",         NULL,     NULL,           4,         0,          0,          0,         0 },
+    { "lutris",             NULL,     NULL,           5,         1,          0,          0,         0 },
+    { "steam_app_default",  NULL,     NULL,           5,         1,          0,          0,         0 },
+    { "Discord",            NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "Vesktop",            NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "Signal",             NULL,     NULL,           7,         0,          0,          0,         0 },
     { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,        -1 }, /* xev */
 };
 
@@ -95,7 +96,7 @@ static const char *termcmd[]     = { "kitty", NULL };
 
 static Key keys[] = {
     /* modifier                     key                        function        argument */
-    { MODKEY,                       XK_r,                      spawn,          {.v = launchercmd} },
+    { MODKEY,                       XK_space,                      spawn,          {.v = launchercmd} },
     { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
     { MODKEY,                       XK_Return,                      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
@@ -128,7 +129,7 @@ static Key keys[] = {
     { MODKEY,                       XK_t,                      setlayout,      {.v = &layouts[0]} },
     { MODKEY,                       XK_f,                      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_m,                      fullscreen,     {0} },
-    { MODKEY,                       XK_space,                  setlayout,      {0} },
+    { MODKEY,                       XK_r,                  setlayout,      {0} },
     { MODKEY|ShiftMask,             XK_m,                      togglefloating, {0} },
     { MODKEY|ShiftMask,             XK_y,                      togglefakefullscreen, {0} },
     { MODKEY,                       XK_0,                      view,           {.ui = ~0 } },

@@ -68,6 +68,6 @@ static const struct arg args[] = {
 	{ cpu_perc,             "  %s%%",      NULL },
 	{ ram_used,             "  %s",         NULL },	
 	{ ram_total,             "/%s",         NULL },
-	{ volume,               "VOL: %s",    NULL},
+	{ vol_perc,     "VOL: %s",     NULL },
 	{ datetime, "  %s",           "%m-%d-%Y %I:%M:%S %p " },
 };

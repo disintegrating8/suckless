@@ -108,9 +108,9 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},
     { 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD ("xbacklight -inc 10")},
     { 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD ("xbacklight -dec 10")},
-    { 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD ("pactl set-sink-volume @DEFAULT_SINk@ +5%")},
-    { 0,                            XF86XK_AudioMute,          spawn,          SHCMD ("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
-    { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD ("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
+    { 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD ("pamixer -d 5")},
+    { 0,                            XF86XK_AudioMute,          spawn,          SHCMD ("pamixer -t")},
+    { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD ("pamixer -i 5 --allow-boost --set-limit 150")},
     { MODKEY|ShiftMask,             XK_b,                      togglebar,      {0} },
     { MODKEY,                       XK_j,                      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,                      focusstack,     {.i = -1 } },
@@ -142,6 +142,10 @@ static Key keys[] = {
     TAGKEYS(                        XK_3,                      2)
     TAGKEYS(                        XK_4,                      3)
     TAGKEYS(                        XK_5,                      4)
+    TAGKEYS(                        XK_6,                      5)
+    TAGKEYS(                        XK_7,                      6)
+    TAGKEYS(                        XK_8,                      7)
+    TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_q,                      quit,           {0} },
     { MODKEY|ControlMask,           XK_q,                      spawn,          SHCMD("$HOME/.config/rofi/powermenu.sh")},
     { MODKEY|ControlMask|ShiftMask, XK_r,                      spawn,          SHCMD("systemctl reboot")},

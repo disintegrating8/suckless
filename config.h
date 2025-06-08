@@ -29,6 +29,7 @@ static const char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
+    "xrandr", "--output", "DisplayPort-0", "--mode", "2560x1440", "--rate", "240", NULL,
     "xset", "s", "off", NULL,
     "xset", "s", "noblank", NULL,
     "xset", "-dpms", NULL,

@@ -58,13 +58,14 @@ static const Rule rules[] = {
     { "St",                 NULL,     NULL,           0,         0,          1,          0,         0 },
     { "kitty",              NULL,     NULL,           1,         0,          1,          0,         0 },
     { "Brave-browser",      NULL,     NULL,           2,         0,          0,          0,         0 },
-    { "Librewolf",          NULL,     NULL,           2,         0,          0,          0,         0 },
+    { "librewolf",          NULL,     NULL,           2,         0,          0,          0,         0 },
     { "obs-studio",         NULL,     NULL,           4,         0,          0,          0,         0 },
     { "lutris",             NULL,     NULL,           5,         1,          0,          0,         0 },
-    { "steam_app_default",  NULL,     NULL,           5,         1,          0,          0,         0 },
-    { "Discord",            NULL,     NULL,           7,         0,          0,          0,         0 },
-    { "Vesktop",            NULL,     NULL,           7,         0,          0,          0,         0 },
-    { "Signal",             NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "steam",              NULL,     NULL,           5,         1,          0,          0,         0 },
+    { "prismlauncher",      NULL,     NULL,           5,         1,          0,          0,         0 },
+    { "discord",            NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "vesktop",            NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "signal",             NULL,     NULL,           7,         0,          0,          0,         0 },
     { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,        -1 }, /* xev */
 };
 

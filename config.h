@@ -30,7 +30,7 @@ static const char *colors[][3] = {
 
 static const char *const autostart[] = {
     "xrandr", "--output", "DisplayPort-0", "--mode", "2560x1440", "--rate", "240", NULL,
-    "fcitx5", NULL,
+    "ibus-daemon", "-rxRd", NULL,
     "xset", "s", "off", NULL,
     "xset", "s", "noblank", NULL,
     "xset", "-dpms", NULL,
@@ -56,16 +56,17 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
     /* class                instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
     { "St",                 NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "kitty",              NULL,     NULL,           1,         0,          1,          0,         0 },
-    { "Brave-browser",      NULL,     NULL,           2,         0,          0,          0,         0 },
-    { "librewolf",          NULL,     NULL,           2,         0,          0,          0,         0 },
-    { "obs-studio",         NULL,     NULL,           4,         0,          0,          0,         0 },
-    { "lutris",             NULL,     NULL,           5,         1,          0,          0,         0 },
-    { "steam",              NULL,     NULL,           5,         1,          0,          0,         0 },
-    { "prismlauncher",      NULL,     NULL,           5,         1,          0,          0,         0 },
-    { "discord",            NULL,     NULL,           7,         0,          0,          0,         0 },
-    { "vesktop",            NULL,     NULL,           7,         0,          0,          0,         0 },
-    { "signal",             NULL,     NULL,           7,         0,          0,          0,         0 },
+    { "kitty",              NULL,     NULL,           1 << 0,    0,          1,          0,         0 },
+    { "Brave-browser",      NULL,     NULL,           1 << 1,    0,          0,          0,         0 },
+    { "librewolf",          NULL,     NULL,           1 << 1,    0,          0,          0,         0 },
+    { "obs-studio",         NULL,     NULL,           1 << 3,    0,          0,          0,         0 },
+    { "lutris",             NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
+    { "steam",              NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
+    { "prismlauncher",      NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
+    { "discord",            NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
+    { "vesktop",            NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
+    { "signal",             NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
+    { "steam_app_.*",       NULL,     NULL,           1 << 7,    1,          0,          0,         0 },
     { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,        -1 }, /* xev */
 };
 
@@ -105,7 +106,7 @@ static Key keys[] = {
     { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
     { MODKEY,                       XK_p,                      spawn,          SHCMD ("flameshot full -p /media/drive/Screenshots/")},
     { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
-    { MODKEY|ControlMask,           XK_p,                      spawn,          SHCMD ("flameshot gui --clipboard")},
+    { MODKEY|ShiftMask,           XK_s,                      spawn,          SHCMD ("flameshot gui")},
     { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},
     { MODKEY,                       XK_w,                      spawn,          SHCMD ("looking-glass-client -F")},
     { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},

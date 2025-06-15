@@ -1,5 +1,5 @@
 /* appearance */
-static const unsigned int refresh_rate        = 60;  /* matches dwm's mouse event processing to your monitor's refresh rate for smoother window interactions */
+static const unsigned int refresh_rate        = 240;  /* matches dwm's mouse event processing to your monitor's refresh rate for smoother window interactions */
 static const unsigned int enable_noborder     = 1;   /* toggles noborder feature (0=disabled, 1=enabled) */
 static const unsigned int borderpx            = 1;   /* border pixel of windows */
 static const unsigned int snap                = 26;  /* snap pixel */
@@ -55,19 +55,19 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
     /* class                instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-    { "St",                 NULL,     NULL,           0,         0,          1,          0,         0 },
-    { "kitty",              NULL,     NULL,           1 << 0,    0,          1,          0,         0 },
-    { "Brave-browser",      NULL,     NULL,           1 << 1,    0,          0,          0,         0 },
-    { "librewolf",          NULL,     NULL,           1 << 1,    0,          0,          0,         0 },
-    { "obs-studio",         NULL,     NULL,           1 << 3,    0,          0,          0,         0 },
-    { "lutris",             NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
-    { "steam",              NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
-    { "prismlauncher",      NULL,     NULL,           1 << 4,    1,          0,          0,         0 },
-    { "discord",            NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
-    { "vesktop",            NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
-    { "signal",             NULL,     NULL,           1 << 6,    0,          0,          0,         0 },
-    { "steam_app_.*",       NULL,     NULL,           1 << 7,    1,          0,          0,         0 },
-    { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,        -1 }, /* xev */
+    { "St",                 NULL,     NULL,           0,         0,          1,          0,         -1 },
+    { "kitty",              NULL,     NULL,           1 << 0,    0,          1,          0,         -1 },
+    { "Brave-browser",      NULL,     NULL,           1 << 1,    0,          0,          0,         -1 },
+    { "librewolf",          NULL,     NULL,           1 << 1,    0,          0,          0,         -1 },
+    { "obs-studio",         NULL,     NULL,           1 << 3,    0,          0,          0,         -1 },
+    { "lutris",             NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
+    { "steam",              NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
+    { "prismlauncher",      NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
+    { "discord",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
+    { "vesktop",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
+    { "signal",             NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
+    { "steam_app_.*",       NULL,     NULL,           1 << 7,    1,          0,          0,         -1 },
+    { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,         -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -100,33 +100,47 @@ static const char *termcmd[]     = { "kitty", NULL };
 
 static Key keys[] = {
     /* modifier                     key                        function        argument */
-    { MODKEY,                       XK_space,                      spawn,          {.v = launchercmd} },
-    { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
-    { MODKEY,                       XK_Return,                      spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
-    { MODKEY,                       XK_p,                      spawn,          SHCMD ("flameshot full -p /media/drive/Screenshots/")},
-    { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
-    { MODKEY|ShiftMask,           XK_s,                      spawn,          SHCMD ("flameshot gui")},
-    { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},
-    { MODKEY,                       XK_w,                      spawn,          SHCMD ("looking-glass-client -F")},
-    { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},
+
+    // brightness and audio 
     { 0,                            XF86XK_MonBrightnessUp,    spawn,          SHCMD ("xbacklight -inc 10")},
     { 0,                            XF86XK_MonBrightnessDown,  spawn,          SHCMD ("xbacklight -dec 10")},
     { 0,                            XF86XK_AudioLowerVolume,   spawn,          SHCMD ("pamixer -d 5")},
     { 0,                            XF86XK_AudioMute,          spawn,          SHCMD ("pamixer -t")},
     { 0,                            XF86XK_AudioRaiseVolume,   spawn,          SHCMD ("pamixer -i 5 --allow-boost --set-limit 150")},
+
+    // screenshot
+    { MODKEY,                       XK_p,                      spawn,          SHCMD ("flameshot full -p /media/drive/Screenshots/")},
+    { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
+    { MODKEY|ShiftMask,             XK_s,                      spawn,          SHCMD ("flameshot gui")},
+
+    { MODKEY,                       XK_space,                  spawn,          SHCMD("rofi -show drun")}, 
+    { MODKEY,                       XK_Return,                 spawn,          SHCMD("kitty")},
+
+    { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
+    { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
+    { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},
+    { MODKEY,                       XK_w,                      spawn,          SHCMD ("looking-glass-client -F")},
+    { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},
+
+    // toggle stuff
     { MODKEY|ShiftMask,             XK_b,                      togglebar,      {0} },
+    { MODKEY|ShiftMask,             XK_m,                      togglefloating, {0} },
+    { MODKEY|ShiftMask,             XK_y,                      togglefakefullscreen, {0} },
+
     { MODKEY,                       XK_j,                      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_k,                      focusstack,     {.i = -1 } },
     { MODKEY|ShiftMask,             XK_j,                      movestack,      {.i = +1 } },
     { MODKEY|ShiftMask,             XK_k,                      movestack,      {.i = -1 } },
     { MODKEY,                       XK_i,                      incnmaster,     {.i = +1 } },
     { MODKEY,                       XK_d,                      incnmaster,     {.i = -1 } },
+
     { MODKEY,                       XK_h,                      setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,                      setmfact,       {.f = +0.05} },
     { MODKEY|ShiftMask,             XK_h,                      setcfact,       {.f = +0.25} },
     { MODKEY|ShiftMask,             XK_l,                      setcfact,       {.f = -0.25} },
     { MODKEY|ShiftMask,             XK_o,                      setcfact,       {.f =  0.00} },
+
+
     { MODKEY,                       XK_x,                 zoom,           {0} },
     { MODKEY,                       XK_Tab,                    view,           {0} },
     { MODKEY,                       XK_q,                      killclient,     {0} },
@@ -134,8 +148,6 @@ static Key keys[] = {
     { MODKEY,                       XK_f,                      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_m,                      fullscreen,     {0} },
     { MODKEY,                       XK_r,                  setlayout,      {0} },
-    { MODKEY|ShiftMask,             XK_m,                      togglefloating, {0} },
-    { MODKEY|ShiftMask,             XK_y,                      togglefakefullscreen, {0} },
     { MODKEY,                       XK_0,                      view,           {.ui = ~0 } },
     { MODKEY,                       XK_comma,                  focusmon,       {.i = -1 } },
     { MODKEY,                       XK_period,                 focusmon,       {.i = +1 } },

@@ -66,7 +66,7 @@ static const Rule rules[] = {
     { "discord",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
     { "vesktop",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
     { "signal",             NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
-    { "steam_app_.*",       NULL,     NULL,           1 << 7,    1,          0,          0,         -1 },
+    { "steam_app_",         NULL,     NULL,           1 << 7,    1,          0,          0,         -1 },
     { NULL,                 NULL,     "Event Tester", 0,         0,          0,          1,         -1 }, /* xev */
 };
 
@@ -113,9 +113,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_p,                      spawn,          SHCMD ("flameshot gui -p /media/drive/Screenshots/")},
     { MODKEY|ShiftMask,             XK_s,                      spawn,          SHCMD ("flameshot gui")},
 
-    { MODKEY,                       XK_space,                  spawn,          SHCMD("rofi -show drun")}, 
-    { MODKEY,                       XK_Return,                 spawn,          SHCMD("kitty")},
-
+    { MODKEY,                       XK_space,                  spawn,          {.v = launchercmd} },
+    { MODKEY,                       XK_Return,                 spawn,          {.v = termcmd } },
     { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
     { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
     { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},

@@ -117,6 +117,7 @@ static Key keys[] = {
     { MODKEY,                       XK_Return,                 spawn,          {.v = termcmd } },
     { MODKEY|ControlMask,           XK_r,                      spawn,          SHCMD ("protonrestart")},
     { MODKEY,                       XK_b,                      spawn,          SHCMD ("xdg-open https://")},
+    { MODKEY,                       XK_v,                      spawn,          SHCMD ("flatpak run com.discordapp.Discord")},
     { MODKEY,                       XK_e,                      spawn,          SHCMD ("xdg-open .")},
     { MODKEY,                       XK_w,                      spawn,          SHCMD ("looking-glass-client -F")},
     { MODKEY|ShiftMask,             XK_w,                      spawn,          SHCMD ("feh --randomize --bg-fill ~/Pictures/backgrounds/*")},

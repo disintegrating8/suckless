@@ -40,7 +40,6 @@ static const char *const autostart[] = {
     "dunst", NULL,
     "picom", "-b", NULL,
     "sh", "-c", "feh --randomize --bg-fill ~/Pictures/backgrounds/*", NULL,
-    "/opt/Synergy/synergy-service", NULL,
     "slstatus", NULL,
     NULL /* terminate */
 };
@@ -61,8 +60,8 @@ static const Rule rules[] = {
     { "librewolf",          NULL,     NULL,           1 << 1,    0,          0,          0,         -1 },
     { "obs-studio",         NULL,     NULL,           1 << 3,    0,          0,          0,         -1 },
     { "lutris",             NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
-    { "steam",              NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
-    { "prismlauncher",      NULL,     NULL,           1 << 4,    1,          0,          0,         -1 },
+    { "steam",  "steamwebhelper",  "Steam",           1 << 4,    1,          0,          0,         -1 },
+    { "PrismLauncher","prismlauncher",NULL,           1 << 4,    1,          0,          0,         -1 },
     { "discord",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
     { "vesktop",            NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },
     { "signal",             NULL,     NULL,           1 << 6,    0,          0,          0,         -1 },

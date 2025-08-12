@@ -43,6 +43,7 @@ static const char *const autostart[] = {
     "picom", "-b", NULL,
     "sh", "-c", "feh --randomize --bg-fill ~/Pictures/backgrounds/*", NULL,
     "slstatus", NULL,
+    "sh", "-c", "$HOME/suckless/inital-boot.sh", NULL,
     NULL /* terminate */
 };
 
